@@ -29,13 +29,13 @@ cart.addEventListener("click", () => {
 });
 
 //============Apiiiiiiiiiiiii=======
-const loadData = () => {
+const CatagoryData = () => {
   fetch("https://openapi.programming-hero.com/api/categories")
     .then((res) => res.json())
-    .then((json) => Cdisplay(json.categories));
+    .then((json) => CatagoriesDisplay(json.categories));
 };
 
-const Cdisplay = (cat) => {
+const CatagoriesDisplay = (cat) => {
   //1
   const catagories1 = document.getElementById("catagories1");
   const catagories2 = document.getElementById("catagories2");
@@ -43,11 +43,11 @@ const Cdisplay = (cat) => {
   for (let catagory of cat) {
     //3
     const list = document.createElement("li");
-    list.innerHTML = `<li>
+    list.innerHTML = `
     <button class=" cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
       ${catagory.category_name}
     </button>
-  </li>
+  
     `;
     //4
     catagories1.append(list);
@@ -55,7 +55,51 @@ const Cdisplay = (cat) => {
   }
 };
 
-loadData();
+CatagoryData();
+
+const AllTreesData = () => {
+  fetch("https://openapi.programming-hero.com/api/plants")
+    .then((res) => res.json())
+    .then((json) => allTreesDisplay(json.plants));
+};
+
+const allTreesDisplay = (cat) => {
+  //1
+  const allTrees = document.getElementById("allTrees");
+  //2
+  for (let card of cat) {
+    //3
+    const div = document.createElement("div");
+    div.innerHTML = `
+    <div class="bg-white p-4 rounded-lg shadow flex flex-col h-full">
+    <div class="flex-1">
+      <div id="cardtitle" class="h-32  rounded">
+        <img src="${card.image}" class="w-full h-full object-cover" >
+      </div>
+      <h3 class="mt-3 font-semibold">${card.name}</h3>
+      <p class="text-sm text-gray-600">
+      ${card.description}
+      </p>
+      <span class="inline-block mt-2 text-xs px-2 py-1 bg-green-100 text-green-700 rounded">${card.category}</span>
+      <div class="flex justify-between items-center mt-3">
+        <span class="font-bold">৳ ${card.price}</span>
+      </div>
+    </div>
+    <button class="mt-4 w-full bg-[#15803D] text-white py-2 rounded-full">
+      Add to Cart
+    </button>
+  </div>
+    `;
+    //4
+    allTrees.append(div);
+    // catagories2.append(list.cloneNode(true));
+  }
+};
+
+AllTreesData();
+
+
+
 
 //  1.get the container and empty
 //  2.get into every lesson using for loop
