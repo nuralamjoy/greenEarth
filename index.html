@@ -13,6 +13,7 @@
 </head>
 
 <body class="bg-green-50">
+
   <header class="bg-[#15803D]">
     <div class="navbar container text-white shadow-sm">
       <div class="navbar-start">
@@ -46,12 +47,14 @@
 
   <section class="hero w-full h-auto bg-[#CFF0DC]">
     <div class="container mx-auto h-full grid grid-cols-1 sm:grid-cols-4 items-center text-center gap-4 px-4">
-      <!-- Left Image -->
-      <div class="flex justify-center sm:self-end">
+      
+      <div class="flex justify-center hidden sm:block sm:self-end">
         <img src="assets/hero-leaf1.png" class="w-2/3 sm:w-full" />
       </div>
-
-      <!-- Center Content -->
+      <div class="logoimg sm:hidden flex items-center justify-center ">
+        <img src="assets/logo.png" class="w-[200px] h-[200px]">
+      </div>
+      
       <div class="col-span-1 sm:col-span-2 mt-5 flex flex-col gap-4 sm:gap-6 justify-center items-center mb-5">
         <h1 class="text-2xl sm:text-3xl font-bold">
           Plant a Tree, Grow a Future
@@ -66,26 +69,29 @@
         </button>
       </div>
 
-      <!-- Right Image -->
-      <div class="flex justify-center sm:self-end">
+      
+      <div class="flex justify-center hidden sm:block sm:self-end">
         <img src="assets/hero-leaf2.png" class="w-2/3 sm:w-full" />
       </div>
     </div>
   </section>
 
-  <section class="trees container">
+  <section class="trees container relative">
     <h1 class="text-center text-[32px] my-4 font-bold">Choose Your Trees</h1>
-    <h3 id="cat" class="sm:hidden text-[32px] my-4 font-bold cursor-pointer inline-block">Cat</h3>
-    <!-- <div id="catList" class="res w-[180px] h-[320px] bg-red-600 absolute left-[100%]"></div> -->
-    <div id="catList" class="tree-menu sm:hidden bg-green-600 z-10 w-[200px] absolute left-[100%]">
-      <!-- <h2 class="font-bold mb-4">Categories</h2> -->
-      <ul class="space-y-2">
+    <div class="resBtn flex justify-between">
+      <h3 id="cat" class="sm:hidden text-[32px] my-4 font-bold cursor-pointer inline-block">List</h3>
+      <h3 id="cartBtn" class="sm:hidden text-[32px] my-4 font-bold cursor-pointer inline-block">Cart</h3>
+    </div>
+    
+    <div id="catList" class="tree-menu sm:hidden bg-green-600 z-10 w-[200px] absolute left-[-100%] transition-all duration-500 ease-in-out">
+      
+      <ul id="catagories1" class="space-y-2">
         <li>
           <button class="cursor-pointer w-full text-left px-3 py-2 rounded bg-[#15803D] text-white">
             All Trees
           </button>
         </li>
-        <li>
+        <!-- <li>
           <button class=" cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
             Fruit Trees
           </button>
@@ -134,7 +140,7 @@
           <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
             Aquatic Plant
           </button>
-        </li>
+        </li> -->
       </ul>
     </div>
 
@@ -142,13 +148,13 @@
     <div class="grid grid-cols-12 gap-4 ">
       <div class="tree-menu hidden sm:block col-span-2">
         <h2 class="font-bold mb-4">Categories</h2>
-        <ul class="space-y-2">
+        <ul id="catagories2" class="space-y-2">
           <li>
             <button class="cursor-pointer w-full text-left px-3 py-2 rounded bg-[#15803D] text-white">
               All Trees
             </button>
           </li>
-          <li>
+          <!-- <li>
             <button class=" cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
               Fruit Trees
             </button>
@@ -197,11 +203,11 @@
             <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
               Aquatic Plant
             </button>
-          </li>
+          </li> -->
         </ul>
       </div>
 
-      <main class="col-span-8">
+      <main class="col-span-12 sm:col-span-8">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
           <!-- Card 1 -->
           <div class="bg-white p-4 rounded-lg shadow flex flex-col h-full">
@@ -316,7 +322,36 @@
         </div>
       </main>
 
-      <div class="curt col-span-2 bg-white p-4 rounded-lg">
+
+      <div id="cartList" class="z-10 w-[220px]  absolute right-[-100%] sm:hidden transition-all duration-500 ease-in-out">
+        <div class="curt col-span-2 bg-green-800 p-4 rounded-lg">
+          <h2 class="font-semibold mb-4 text-white">Your Cart</h2>
+  
+          <div class="bg-green-100 p-3 rounded flex justify-between items-center mb-2">
+            <div>
+              <p class="font-medium">Mango Tree</p>
+              <p class="text-sm text-gray-600">৳500 × 1</p>
+            </div>
+            <button class="text-gray-500 hover:text-red-600">✕</button>
+          </div>
+  
+          <div class="bg-green-100 p-3 rounded flex justify-between items-center mb-2">
+            <div>
+              <p class="font-medium">Guava Tree</p>
+              <p class="text-sm text-gray-600">৳500 × 1</p>
+            </div>
+            <button class="text-gray-500 hover:text-red-600">✕</button>
+          </div>
+  
+          
+          <div class="flex justify-between items-center mt-4 font-semibold text-white">
+            <span>Total:</span>
+            <span>৳1000</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="curt hidden sm:block col-span-2 bg-white p-4 rounded-lg">
         <h2 class="font-semibold mb-4">Your Cart</h2>
 
         <div class="bg-green-100 p-3 rounded flex justify-between items-center mb-2">
@@ -335,12 +370,14 @@
           <button class="text-gray-500 hover:text-red-600">✕</button>
         </div>
 
-        <!-- Total -->
+        
         <div class="flex justify-between items-center mt-4 font-semibold">
           <span>Total:</span>
           <span>৳1000</span>
         </div>
       </div>
+
+
     </div>
   </section>
 
@@ -389,22 +426,22 @@
   </section>
 
 
-  <section class="container">
+  <section class="">
     <div class="bg-green-700 py-12 px-4 lg:px-20 text-white">
       <h2 class="text-center text-xl font-semibold mb-6">
         Plant a Tree Today
       </h2>
       <div class="max-w-md mx-auto bg-green-800 p-6 rounded-xl shadow-lg">
         <form class="space-y-4">
-          <input type="text" placeholder="Your Name" class="w-full px-4 py-2 rounded-lg text-black" />
-          <input type="email" placeholder="Your Email Address" class="w-full px-4 py-2 rounded-lg text-black" />
-          <select class="w-full px-4 py-2 rounded-lg text-black">
+          <input type="text" placeholder="Your Name" class="w-full px-4 py-2 rounded-lg bg-white outline-none text-black" />
+          <input type="email" placeholder="Your Email Address" class="w-full px-4 py-2 rounded-lg bg-white outline-none text-black" />
+          <select class="w-full px-4 py-2 rounded-lg bg-white outline-none text-black">
             <option>Number of Trees</option>
             <option>1</option>
             <option>5</option>
             <option>10</option>
           </select>
-          <button class="w-full py-2 bg-yellow-400 text-black font-semibold rounded-lg">
+          <button class="w-full py-2 bg-yellow-400 text-green-800 font-semibold rounded-lg cursor-pointer">
             Donate Now
           </button>
         </form>
@@ -413,8 +450,8 @@
   </section>
 
 
-  <footer class="bg-green-700 text-center text-white py-4 text-sm">
-    © 2025 Green Earth. All Rights Reserved.
+  <footer class="bg-green-900 text-center text-white py-4 text-sm">
+    © 2025 Green Earth by <span class="text-yellow-300">NUR ALAM JOY</span>. All Rights Reserved.
   </footer>
 
   <script src="app.js"></script>
