@@ -87,60 +87,11 @@
       
       <ul id="catagories1" class="space-y-2">
         <li>
-          <button class="cursor-pointer w-full text-left px-3 py-2 rounded bg-[#15803D] text-white">
+          <button onclick="CatDataDisplay(0)" class="catBtn cursor-pointer w-full text-left px-3 py-2 rounded bg-[#15803D] text-white" data-id="0">
             All Trees
           </button>
         </li>
-        <!-- <li>
-          <button class=" cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-            Fruit Trees
-          </button>
-        </li>
-        <li>
-          <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-            Flowering Trees
-          </button>
-        </li>
-        <li>
-          <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-            Shade Trees
-          </button>
-        </li>
-        <li>
-          <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-            Medicinal Trees
-          </button>
-        </li>
-        <li>
-          <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-            Timber Trees
-          </button>
-        </li>
-        <li>
-          <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-            Evergreen Trees
-          </button>
-        </li>
-        <li>
-          <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-            Ornamental Plants
-          </button>
-        </li>
-        <li>
-          <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-            Bamboo
-          </button>
-        </li>
-        <li>
-          <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-            Climbers
-          </button>
-        </li>
-        <li>
-          <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-            Aquatic Plant
-          </button>
-        </li> -->
+        
       </ul>
     </div>
 
@@ -150,60 +101,11 @@
         <h2 class="font-bold mb-4">Categories</h2>
         <ul id="catagories2" class="space-y-2">
           <li>
-            <button class="cursor-pointer w-full text-left px-3 py-2 rounded bg-[#15803D] text-white">
+            <button onclick="CatDataDisplay(0)"  id="catBtn-0" class=" catBtn cursor-pointer w-full text-left px-3 py-2 rounded active" data-id="0">
               All Trees
             </button>
           </li>
-          <!-- <li>
-            <button class=" cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-              Fruit Trees
-            </button>
-          </li>
-          <li>
-            <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-              Flowering Trees
-            </button>
-          </li>
-          <li>
-            <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-              Shade Trees
-            </button>
-          </li>
-          <li>
-            <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-              Medicinal Trees
-            </button>
-          </li>
-          <li>
-            <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-              Timber Trees
-            </button>
-          </li>
-          <li>
-            <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-              Evergreen Trees
-            </button>
-          </li>
-          <li>
-            <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-              Ornamental Plants
-            </button>
-          </li>
-          <li>
-            <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-              Bamboo
-            </button>
-          </li>
-          <li>
-            <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-              Climbers
-            </button>
-          </li>
-          <li>
-            <button class="cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-              Aquatic Plant
-            </button>
-          </li> -->
+          
         </ul>
       </div>
 
@@ -230,95 +132,7 @@
             </button>
           </div> -->
 
-          <!-- <div class="bg-white p-4 rounded-lg shadow flex flex-col h-full">
-            <div class="flex-1">
-              <div class="h-32 bg-gray-200 rounded"></div>
-              <h3 class="mt-3 font-semibold">Guava Tree</h3>
-              <p class="text-sm text-gray-600">
-                A tropical fruit tree producing sweet and nutritious guavas.
-              </p>
-              <span class="inline-block mt-2 text-xs px-2 py-1 bg-green-100 text-green-700 rounded">Fruit Tree</span>
-              <div class="flex justify-between items-center mt-3">
-                <span class="font-bold">৳500</span>
-              </div>
-            </div>
-            <button class="mt-4 w-full bg-[#15803D] text-white py-2 rounded-full">
-              Add to Cart
-            </button>
-          </div>
-
-          <div class="bg-white p-4 rounded-lg shadow flex flex-col h-full">
-            <div class="flex-1">
-              <div class="h-32 bg-gray-200 rounded"></div>
-              <h3 class="mt-3 font-semibold">Neem Tree</h3>
-              <p class="text-sm text-gray-600">
-                A medicinal tree with many health benefits, commonly used in
-                traditional medicine.
-              </p>
-              <span class="inline-block mt-2 text-xs px-2 py-1 bg-green-100 text-green-700 rounded">Medicinal
-                Tree</span>
-              <div class="flex justify-between items-center mt-3">
-                <span class="font-bold">৳600</span>
-              </div>
-            </div>
-            <button class="mt-4 w-full bg-green-600 text-white py-2 rounded-full">
-              Add to Cart
-            </button>
-          </div>
-
-          <div class="bg-white p-4 rounded-lg shadow flex flex-col h-full">
-            <div class="flex-1">
-              <div class="h-32 bg-gray-200 rounded"></div>
-              <h3 class="mt-3 font-semibold">Bamboo Plant</h3>
-              <p class="text-sm text-gray-600">
-                A fast-growing plant, perfect for landscaping and eco-friendly
-                purposes.
-              </p>
-              <span class="inline-block mt-2 text-xs px-2 py-1 bg-green-100 text-green-700 rounded">Bamboo</span>
-              <div class="flex justify-between items-center mt-3">
-                <span class="font-bold">৳400</span>
-              </div>
-            </div>
-            <button class="mt-4 w-full bg-green-600 text-white py-2 rounded-full">
-              Add to Cart
-            </button>
-          </div>
-
-          <div class="bg-white p-4 rounded-lg shadow flex flex-col h-full">
-            <div class="flex-1">
-              <div class="h-32 bg-gray-200 rounded"></div>
-              <h3 class="mt-3 font-semibold">Teak Tree</h3>
-              <p class="text-sm text-gray-600">
-                A timber tree known for its strong and durable wood.
-              </p>
-              <span class="inline-block mt-2 text-xs px-2 py-1 bg-green-100 text-green-700 rounded">Timber Tree</span>
-              <div class="flex justify-between items-center mt-3">
-                <span class="font-bold">৳1200</span>
-              </div>
-            </div>
-            <button class="mt-4 w-full bg-green-600 text-white py-2 rounded-full">
-              Add to Cart
-            </button>
-          </div>
-
-          <div class="bg-white p-4 rounded-lg shadow flex flex-col h-full">
-            <div class="flex-1">
-              <div class="h-32 bg-gray-200 rounded"></div>
-              <h3 class="mt-3 font-semibold">Pine Tree</h3>
-              <p class="text-sm text-gray-600">
-                An evergreen tree, widely used for ornamental and forestry
-                purposes.
-              </p>
-              <span class="inline-block mt-2 text-xs px-2 py-1 bg-green-100 text-green-700 rounded">Evergreen
-                Tree</span>
-              <div class="flex justify-between items-center mt-3">
-                <span class="font-bold">৳800</span>
-              </div>
-            </div>
-            <button class="mt-4 w-full bg-green-600 text-white py-2 rounded-full">
-              Add to Cart
-            </button>
-          </div> -->
+          
 
         </div>
       </main>
@@ -381,6 +195,14 @@
 
     </div>
   </section>
+
+  <!-- Open the modal using ID.showModal() method -->
+<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div id="modalContent" class="modal-box">
+    </div>
+  </div>
+</dialog>
 
 
   <section class="container ">

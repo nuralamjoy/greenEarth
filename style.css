@@ -2,3 +2,15 @@
   max-width: calc(100% - 40px);
   margin: 0 auto;
 }
+.active{
+  background-color: #15803D;
+  color: white;
+}
+.in_active{
+  background: none;
+  color: black;
+
+}
+.in_active:hover{
+  background-color: #CFF0DC;
+}

@@ -1,18 +1,4 @@
-// let title = document.getElementById("cardtitle");
-// const loadData = () => {
-//   //   const url = `https://openapi.programming-hero.com/api/plants`;
-//   fetch("https://openapi.programming-hero.com/api/plants")
-//     .then((res) => res.json())
-//     .then((json) => display(json.plants));
-// };
 
-// const display = (cat) => {
-//   const obj = cat[0];
-// //   const img = document.createElement("img");
-//     title.innerHTML = `<img src="${obj.image}" class="w-full h-full object-cover" >`;
-// };
-
-// loadData();
 
 const cat = document.getElementById("cat");
 const cart = document.getElementById("cartBtn");
@@ -36,26 +22,67 @@ const CatagoryData = () => {
 };
 
 const CatagoriesDisplay = (cat) => {
-  //1
   const catagories1 = document.getElementById("catagories1");
   const catagories2 = document.getElementById("catagories2");
-  //2
+
   for (let catagory of cat) {
-    //3
-    const list = document.createElement("li");
-    list.innerHTML = `
-    <button class=" cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100">
-      ${catagory.category_name}
-    </button>
-  
+    const btnHTML = `
+      <li>
+        <button onclick="CatDataDisplay(${catagory.id})" 
+          class="catBtn cursor-pointer w-full text-left px-3 py-2 rounded hover:bg-green-100"
+          data-id="${catagory.id}">
+          ${catagory.category_name}
+        </button>
+      </li>
     `;
-    //4
-    catagories1.append(list);
-    catagories2.append(list.cloneNode(true));
+
+    catagories1.innerHTML += btnHTML;
+    catagories2.innerHTML += btnHTML;
   }
 };
 
 CatagoryData();
+
+const CatDataDisplay = (id) => {
+
+  if(id==0){
+    AllTreesData();
+    
+    const catBtn = document.querySelectorAll(".catBtn");
+    catBtn.forEach((btn) => {
+      btn.classList.remove("active");
+      btn.classList.add("in_active");
+    });
+
+    
+    const catBtbData = document.querySelectorAll(`.catBtn[data-id="${id}"]`);
+    catBtbData.forEach((btn) => {
+      btn.classList.add("active");
+      btn.classList.remove("in_active");
+    });
+    return;
+  }
+  fetch(`https://openapi.programming-hero.com/api/category/${id}`)
+    .then((res) => res.json())
+    .then((json) => {
+      allTreesDisplay(json.plants);
+      
+      const catBtn = document.querySelectorAll(".catBtn");
+      catBtn.forEach((btn) => {
+        btn.classList.remove("active");
+        btn.classList.add("in_active");
+      });
+
+      
+      const catBtbData = document.querySelectorAll(`.catBtn[data-id="${id}"]`);
+      catBtbData.forEach((btn) => {
+        btn.classList.add("active");
+        btn.classList.remove("in_active");
+      });
+    });
+
+  
+};
 
 const AllTreesData = () => {
   fetch("https://openapi.programming-hero.com/api/plants")
@@ -66,6 +93,7 @@ const AllTreesData = () => {
 const allTreesDisplay = (cat) => {
   //1
   const allTrees = document.getElementById("allTrees");
+  allTrees.innerHTML = "";
   //2
   for (let card of cat) {
     //3
@@ -73,10 +101,10 @@ const allTreesDisplay = (cat) => {
     div.innerHTML = `
     <div class="bg-white p-4 rounded-lg shadow flex flex-col h-full">
     <div class="flex-1">
-      <div id="cardtitle" class="h-32  rounded">
+      <div class="h-32  rounded">
         <img src="${card.image}" class="w-full h-full object-cover" >
       </div>
-      <h3 class="mt-3 font-semibold">${card.name}</h3>
+      <h3 onclick="Modal(${card.id})" class=" cursor-pointer inline-block mt-3 font-semibold">${card.name}</h3>
       <p class="text-sm text-gray-600">
       ${card.description}
       </p>
@@ -92,14 +120,37 @@ const allTreesDisplay = (cat) => {
     `;
     //4
     allTrees.append(div);
-    // catagories2.append(list.cloneNode(true));
   }
 };
 
 AllTreesData();
 
-
-
+const Modal = (id) => {
+  fetch(`https://openapi.programming-hero.com/api/plant/${id}`)
+    .then((res) => res.json())
+    .then((json) => displayModal(json.plants));
+  // console.log(`https://openapi.programming-hero.com/api/plant/${id}`);
+};
+const displayModal = (plant) => {
+  const modalContent = document.getElementById("modalContent");
+  modalContent.innerHTML = "";
+  const div = document.createElement("div");
+  div.innerHTML = `
+  <h3 class="text-lg font-bold mb-2">${plant.name}</h3>
+  <img src="${plant.image}" class="w-full h-[200px] object-cover mb-3" >
+  <p class="text-sm mb-2"><span class="font-bold">Category: </span>${plant.category}</p>
+  <p class="text-sm mb-2"><span class="font-bold">Price: ৳</span>${plant.price}</p>
+  <p class="text-sm mb-2">${plant.description}</p>
+  <div class="modal-action">
+      <form method="dialog">
+        <button class="btn bg-green-600 text-white">Close</button>
+      </form>
+    </div>
+  `;
+  modalContent.append(div);
+  const my_modal_5 = document.getElementById("my_modal_5");
+  my_modal_5.showModal();
+};
 
 //  1.get the container and empty
 //  2.get into every lesson using for loop
