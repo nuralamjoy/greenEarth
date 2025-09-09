@@ -1,4 +1,7 @@
-
+let totalTk = 0;
+const total = document.querySelectorAll(".total");
+total[0].innerHTML = `৳ ${totalTk}`;
+total[1].innerHTML = `৳ ${totalTk}`;
 
 const cat = document.getElementById("cat");
 const cart = document.getElementById("cartBtn");
@@ -14,7 +17,6 @@ cart.addEventListener("click", () => {
   cartList.classList.toggle("right-[-100%]");
 });
 
-//============Apiiiiiiiiiiiii=======
 const CatagoryData = () => {
   fetch("https://openapi.programming-hero.com/api/categories")
     .then((res) => res.json())
@@ -44,17 +46,16 @@ const CatagoriesDisplay = (cat) => {
 CatagoryData();
 
 const CatDataDisplay = (id) => {
-
-  if(id==0){
+  mngSpinner(1);
+  if (id == 0) {
     AllTreesData();
-    
+
     const catBtn = document.querySelectorAll(".catBtn");
     catBtn.forEach((btn) => {
       btn.classList.remove("active");
       btn.classList.add("in_active");
     });
 
-    
     const catBtbData = document.querySelectorAll(`.catBtn[data-id="${id}"]`);
     catBtbData.forEach((btn) => {
       btn.classList.add("active");
@@ -66,22 +67,19 @@ const CatDataDisplay = (id) => {
     .then((res) => res.json())
     .then((json) => {
       allTreesDisplay(json.plants);
-      
+
       const catBtn = document.querySelectorAll(".catBtn");
       catBtn.forEach((btn) => {
         btn.classList.remove("active");
         btn.classList.add("in_active");
       });
 
-      
       const catBtbData = document.querySelectorAll(`.catBtn[data-id="${id}"]`);
       catBtbData.forEach((btn) => {
         btn.classList.add("active");
         btn.classList.remove("in_active");
       });
     });
-
-  
 };
 
 const AllTreesData = () => {
@@ -91,12 +89,12 @@ const AllTreesData = () => {
 };
 
 const allTreesDisplay = (cat) => {
-  //1
+  //step1
   const allTrees = document.getElementById("allTrees");
   allTrees.innerHTML = "";
-  //2
+  //step2
   for (let card of cat) {
-    //3
+    //step3
     const div = document.createElement("div");
     div.innerHTML = `
     <div class="bg-white p-4 rounded-lg shadow flex flex-col h-full">
@@ -113,14 +111,15 @@ const allTreesDisplay = (cat) => {
         <span class="font-bold">৳ ${card.price}</span>
       </div>
     </div>
-    <button class="mt-4 w-full bg-[#15803D] text-white py-2 rounded-full">
+    <button onclick="addCart('${card.name}', ${card.price})" class="mt-4 w-full bg-[#15803D] text-white py-2 rounded-full cursor-pointer">
       Add to Cart
     </button>
   </div>
     `;
-    //4
+    //step 4
     allTrees.append(div);
   }
+  mngSpinner(0);
 };
 
 AllTreesData();
@@ -152,7 +151,57 @@ const displayModal = (plant) => {
   my_modal_5.showModal();
 };
 
+const mngSpinner = (status) => {
+  const spinner = document.getElementById("spinner");
+  const allCard = document.getElementById("allCard");
+  if (status) {
+    spinner.classList.remove("hidden");
+    allCard.classList.add("hidden");
+  } else {
+    allCard.classList.remove("hidden");
+    spinner.classList.add("hidden");
+  }
+};
+mngSpinner(1);
 //  1.get the container and empty
 //  2.get into every lesson using for loop
 //  3.create element
 //  4.append into container
+
+const addCart = (name, price) => {
+  const items = document.querySelectorAll(".items");
+  const div1 = document.createElement("div");
+
+  div1.innerHTML = `
+    <div class="bg-green-100 p-3 rounded flex justify-between items-center mb-2">
+      <div>
+        <p class="font-medium">${name}</p>
+        <p class="text-sm text-gray-600">${price} × 1</p>
+      </div>
+      <button class="text-red-600 font-extrabold cursor-pointer">✕</button>
+    </div>
+  `;
+
+ 
+  const div2 = div1.cloneNode(true);
+
+  items[0].append(div1);
+  items[1].append(div2);
+
+  totalTk += price;
+  total[0].innerHTML = `৳ ${totalTk}`;
+  total[1].innerHTML = `৳ ${totalTk}`;
+
+
+  const removeBoth = () => {
+    div1.remove();
+    div2.remove();
+    totalTk -= price;
+    total[0].innerHTML = `৳ ${totalTk}`;
+    total[1].innerHTML = `৳ ${totalTk}`;
+  };
+
+  div1.querySelector("button").addEventListener("click", removeBoth);
+  div2.querySelector("button").addEventListener("click", removeBoth);
+
+};
