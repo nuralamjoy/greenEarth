@@ -5,15 +5,15 @@ total[1].innerHTML = `৳ ${totalTk}`;
 
 const cat = document.getElementById("cat");
 const cart = document.getElementById("cartBtn");
-// let tgl = 0;
+
 cat.addEventListener("click", () => {
   const catList = document.getElementById("catList");
-  catList.classList.toggle("left-0"); // visible
+  catList.classList.toggle("left-0"); 
   catList.classList.toggle("left-[-100%]");
 });
 cart.addEventListener("click", () => {
   const cartList = document.getElementById("cartList");
-  cartList.classList.toggle("right-0"); // screen e asbe
+  cartList.classList.toggle("right-0"); 
   cartList.classList.toggle("right-[-100%]");
 });
 
